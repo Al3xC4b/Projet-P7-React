@@ -1,0 +1,14 @@
+@mixin font-primary{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+@mixin font-bold{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+@mixin font-thin{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}

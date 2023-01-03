@@ -1,0 +1,38 @@
+header{
+    margin: 5%;
+    display: flex;
+    justify-content: space-between;
+
+    img{
+        width: 145px;
+        height: 47px;
+    }
+}
+
+nav {
+
+    width: 135px;   
+
+    ul {
+        height: 47px;
+        display: flex;
+        list-style: none;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 12px;
+
+        a{
+            text-decoration: none;
+            color: $color-primary;
+
+            &:visited{
+                color: $color-primary;
+            }
+        }
+    }
+    
+    
+}
