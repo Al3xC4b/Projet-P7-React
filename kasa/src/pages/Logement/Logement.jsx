@@ -1,13 +1,13 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import Carroussel from "../../components/Carroussel/Carroussel";
 
 function FicheLogement() {
-    const { logementId } = useParams();
-    return (
+   // const { logementId } = useParams();
+   return (
       <>
-        <Carroussel />
+         <Carroussel />
       </>
-    );
-  }
-  
-  export default FicheLogement;  
+   );
+}
+
+export default FicheLogement;

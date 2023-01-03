@@ -1,16 +1,42 @@
-function Cards(){
-    return(
-        <section id="location">
-            <div className="cards-location">
-                <img className="cards-location__img" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg" alt="Appartement cosy" />
-                <h2 className="cards-location__tittle">Appartement cosy</h2>
-            </div>
-            <div className="cards-location">
-                <img className="cards-location__img" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg" alt="Appartement cosy" />
-                <h2 className="cards-location__tittle">Appartement cosy</h2>
-            </div>
-        </section>
-    )
+import { useEffect, useState } from "react";
+import Loader from "../Loader/Loader";
+
+function Cards() {
+   const [locationList, setlocation] = useState([]);
+   const [isDataLoading, setDataLoading] = useState(false);
+   useEffect(() => {
+      async function fetchLocation() {
+         setDataLoading(true);
+         try {
+            const response = await fetch("../../../data/logements.json");
+            const locations = await response.json();
+            setlocation(locations);
+         } catch (e) {
+            console.log(e);
+         } finally {
+            setDataLoading(false);
+         }
+      }
+      fetchLocation();
+   }, []);
+   return (
+      <section id="location">
+         {isDataLoading ? (
+            <Loader />
+         ) : (
+            locationList.map((location) => (
+               <div className="cards-location" key={location.id}>
+                  <img
+                     className="cards-location__img"
+                     src={location.cover}
+                     alt={location.title}
+                  />
+                  <h2 className="cards-location__title">{location.title}</h2>
+               </div>
+            ))
+         )}
+      </section>
+   );
 }
 
-export default Cards
+export default Cards;
