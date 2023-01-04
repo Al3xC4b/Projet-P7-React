@@ -1,11 +1,10 @@
-import { aboutContent } from "../../assets/aboutContent";
 import { useEffect, useState } from "react";
 
-function Dropdown() {
+function Dropdown(props) {
    const [content, setContent] = useState([]);
    useEffect(() => {
-      setContent(aboutContent);
-   }, []);
+      setContent(props.content);
+   }, [props.content]);
 
    return (
       <>
