@@ -1,2 +1,9 @@
 $color-primary: #ff6060;
 $color-secondary: white;
+$color-tertiary: #f7f7f7;
+
+//Media queries
+$breakpoints: (
+   tablet: 768px,
+   desktop: 992px,
+);

@@ -1,10 +1,10 @@
-import Banner from "../../components/Banner/Banner.jsx";
+import BannerHome from "../../components/Banner/BannerHome.jsx";
 import Cards from "../../components/Cards/Cards.jsx";
 
 function Home() {
    return (
       <>
-         <Banner />
+         <BannerHome />
          <Cards />
       </>
    );

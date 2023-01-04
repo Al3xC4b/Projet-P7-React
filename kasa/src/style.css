@@ -64,19 +64,19 @@ footer p {
   font-size: 12px;
 }
 
-.banner {
+.banner-home {
   margin: 5%;
   height: 111px;
   position: relative;
 }
-.banner__img {
+.banner-home__img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
   object-fit: cover;
   filter: brightness(0.7);
 }
-.banner__title {
+.banner-home__title {
   position: absolute;
   font-size: 24px;
   color: white;
@@ -84,6 +84,18 @@ footer p {
   margin: 0;
   top: 26.5px;
   left: 16px;
+}
+
+.banner-about {
+  margin: 5%;
+  height: 223px;
+}
+.banner-about__img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  filter: brightness(0.7);
 }
 
 #location {
@@ -122,6 +134,88 @@ footer p {
   animation: rotate 1s infinite linear;
   height: 0;
   width: 0;
+}
+
+.drop-down {
+  margin: 5%;
+}
+.drop-down__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  background-color: #ff6060;
+  border-radius: 5px;
+  color: white;
+  padding-left: 10px;
+  padding-right: 5px;
+  position: relative;
+  z-index: 1;
+}
+.drop-down__title h2 {
+  font-size: 13px;
+  font-weight: 500;
+}
+.drop-down__content {
+  background-color: #f7f7f7;
+  border-radius: 0 0 5px 5px;
+  margin-top: -5px;
+  color: #ff6060;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: justify;
+  padding: 20px 10px 10px 10px;
+  position: relative;
+  z-index: 0;
+}
+
+.carroussel {
+  margin: 5%;
+  height: 255px;
+  position: relative;
+}
+.carroussel__img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.carroussel__chevron-left, .carroussel__chevron-right {
+  position: absolute;
+  top: 102.5px;
+  font-size: 50px;
+  color: white;
+}
+.carroussel__chevron-left {
+  margin-left: -10px;
+}
+.carroussel__chevron-right {
+  margin-left: -40px;
+}
+
+#pageNotFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ff6060;
+}
+#pageNotFound h1 {
+  font-size: 96px;
+  font-weight: 700;
+  margin-bottom: 11px;
+  margin-top: 200px;
+}
+#pageNotFound p {
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 80%;
+  text-align: center;
+  font-size: 18px;
+}
+#pageNotFound a {
+  margin-top: 133px;
+  color: #ff6060;
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=style.css.map */

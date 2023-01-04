@@ -1,14 +1,14 @@
-import banner from "../../assets/banner.jpg";
+import banner from "../../assets/bannerHome.jpg";
 
-function Banner() {
+function BannerHome() {
    return (
-      <section className="banner">
+      <section className="banner-home">
          <img
-            className="banner__img"
+            className="banner-home__img"
             src={banner}
             alt="Bannière représentant un paysage d'une côte océanique"
          />
-         <h1 className="banner__title">
+         <h1 className="banner-home__title">
             Chez vous,
             <br />
             partout et ailleurs
@@ -17,4 +17,4 @@ function Banner() {
    );
 }
 
-export default Banner;
+export default BannerHome;
