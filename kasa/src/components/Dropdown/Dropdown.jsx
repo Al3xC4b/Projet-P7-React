@@ -1,10 +1,5 @@
-import { useEffect, useState } from "react";
-
 function Dropdown(props) {
-   const [content, setContent] = useState([]);
-   useEffect(() => {
-      setContent(props.content);
-   }, [props.content]);
+   const content = props.content;
 
    return (
       <>
@@ -14,7 +9,7 @@ function Dropdown(props) {
                   <h2>{dropdown.title}</h2>
                   <span className="material-symbols-outlined">expand_more</span>
                </div>
-               <div className="drop-down__content">{dropdown.content}</div>
+               <div className="drop-down__content">{dropdown.text}</div>
             </div>
          ))}
       </>

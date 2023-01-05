@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import Loader from "../Loader/Loader";
+import { useNavigate } from "react-router-dom";
 
 function Cards() {
-   const [locationList, setlocation] = useState([]);
+   const [locationList, setLocation] = useState([]);
    const [isDataLoading, setDataLoading] = useState(false);
+   const navigate = useNavigate();
    useEffect(() => {
       async function fetchLocation() {
          setDataLoading(true);
          try {
             const response = await fetch("../../../data/logements.json");
             const locations = await response.json();
-            setlocation(locations);
+            setLocation(locations);
          } catch (e) {
             console.log(e);
          } finally {
@@ -19,13 +21,22 @@ function Cards() {
       }
       fetchLocation();
    }, []);
+
+   const handleClick = (id) => {
+      navigate(`/logement/${id}`);
+   };
+
    return (
-      <section id="location">
+      <section id="locations">
          {isDataLoading ? (
             <Loader />
          ) : (
             locationList.map((location) => (
-               <div className="cards-location" key={location.id}>
+               <div
+                  className="cards-location"
+                  key={location.id}
+                  onClick={() => handleClick(location.id)}
+               >
                   <img
                      className="cards-location__img"
                      src={location.cover}
