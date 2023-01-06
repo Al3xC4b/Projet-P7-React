@@ -6,7 +6,7 @@ import Tags from "../../components/Tags/Tags";
 
 function FicheLogement() {
    const [logement, setLogement] = useState([]);
-   const [isDataLoading, setDataLoading] = useState(true);
+   const [isDataLoading, setDataLoading] = useState(false);
    const { logementId } = useParams();
    useEffect(() => {
       console.log("useEffect");
@@ -40,10 +40,10 @@ function FicheLogement() {
                <Carroussel />
                <h1>{logement.title}</h1>
                <div className="location">
-                  {logement.location.split(" - ")[1]},{" "}
-                  {logement.location.split(" - ")[0]}
+                  {logement.location && logement.location.split(" - ")[1]},{" "}
+                  {logement.location && logement.location.split(" - ")[0]}
                </div>
-               <Tags tags={logement.tags} />
+               {logement.tags && <Tags tags={logement.tags} />}
             </>
          )}
       </section>
