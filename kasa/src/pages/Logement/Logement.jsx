@@ -2,13 +2,14 @@ import { useParams } from "react-router-dom";
 import Carroussel from "../../components/Carroussel/Carroussel";
 import { useState, useEffect } from "react";
 import Loader from "../../components/Loader/Loader";
+import Tags from "../../components/Tags/Tags";
 
 function FicheLogement() {
    const [logement, setLogement] = useState([]);
-   const [isDataLoading, setDataLoading] = useState(false);
+   const [isDataLoading, setDataLoading] = useState(true);
    const { logementId } = useParams();
-
    useEffect(() => {
+      console.log("useEffect");
       async function fetchLocation() {
          setDataLoading(true);
          try {
@@ -28,6 +29,8 @@ function FicheLogement() {
       }
       fetchLocation();
    }, []);
+   console.log(logement);
+   console.log(isDataLoading);
    return (
       <section id="logement">
          {isDataLoading ? (
@@ -36,7 +39,11 @@ function FicheLogement() {
             <>
                <Carroussel />
                <h1>{logement.title}</h1>
-               <div className="location">{logement.location}</div>
+               <div className="location">
+                  {logement.location.split(" - ")[1]},{" "}
+                  {logement.location.split(" - ")[0]}
+               </div>
+               <Tags tags={logement.tags} />
             </>
          )}
       </section>

@@ -25,7 +25,7 @@ function Cards() {
    const handleClick = (id) => {
       navigate(`/logement/${id}`);
    };
-
+   console.log(locationList);
    return (
       <section id="locations">
          {isDataLoading ? (
