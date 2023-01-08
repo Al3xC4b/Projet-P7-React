@@ -3,17 +3,18 @@ import Carroussel from "../../components/Carroussel/Carroussel";
 import { useState, useEffect } from "react";
 import Loader from "../../components/Loader/Loader";
 import Tags from "../../components/Tags/Tags";
+import Rating from "../../components/Rating/Rating";
+import Dropdown from "../../components/Dropdown/Dropdown";
 
 function FicheLogement() {
    const [logement, setLogement] = useState([]);
    const [isDataLoading, setDataLoading] = useState(false);
    const { logementId } = useParams();
    useEffect(() => {
-      console.log("useEffect");
       async function fetchLocation() {
          setDataLoading(true);
          try {
-            const response = await fetch("../../../data/logements.json");
+            const response = await fetch("/data/logements.json");
             const locations = await response.json();
             for (let location of locations) {
                if (location.id === logementId) {
@@ -29,8 +30,21 @@ function FicheLogement() {
       }
       fetchLocation();
    }, []);
-   console.log(logement);
-   console.log(isDataLoading);
+
+   let description = [];
+   if (logement.description) {
+      description.push(
+         {
+            title: "Descrition",
+            text: logement.description,
+         },
+         {
+            title: "Équipements",
+            text: logement.equipments,
+         }
+      );
+   }
+
    return (
       <section id="logement">
          {isDataLoading ? (
@@ -38,12 +52,35 @@ function FicheLogement() {
          ) : (
             <>
                <Carroussel />
-               <h1>{logement.title}</h1>
-               <div className="location">
-                  {logement.location && logement.location.split(" - ")[1]},{" "}
-                  {logement.location && logement.location.split(" - ")[0]}
+               <div className="logement-info">
+                  <h1>{logement.title}</h1>
+                  <div className="logement-info__location">
+                     {logement.location && logement.location.split(" - ")[1]},{" "}
+                     {logement.location && logement.location.split(" - ")[0]}
+                  </div>
+                  {logement.tags && <Tags tags={logement.tags} />}
                </div>
-               {logement.tags && <Tags tags={logement.tags} />}
+               <div className="logement-rate-and-host">
+                  {logement.rating && <Rating rating={logement.rating} />}
+                  <div className="host">
+                     {logement.host && (
+                        <>
+                           <div className="host__name">
+                              {logement.host.name &&
+                                 logement.host.name.split(" ")[0]}
+                              {"\n"}
+                              {logement.host.name.split(" ")[1]}
+                           </div>
+                           <div className="host__picture">
+                              <img src={logement.host.picture} alt="Profile" />
+                           </div>
+                        </>
+                     )}
+                  </div>
+               </div>
+               <div className="logement-description">
+                  <Dropdown content={description} />
+               </div>
             </>
          )}
       </section>

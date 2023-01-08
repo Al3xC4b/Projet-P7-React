@@ -8,11 +8,7 @@ function BannerHome() {
             src={banner}
             alt="Bannière représentant un paysage d'une côte océanique"
          />
-         <h1 className="banner-home__title">
-            Chez vous,
-            <br />
-            partout et ailleurs
-         </h1>
+         <h1 className="banner-home__title">Chez vous, partout et ailleurs</h1>
       </section>
    );
 }

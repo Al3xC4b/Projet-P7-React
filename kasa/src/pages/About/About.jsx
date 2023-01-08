@@ -4,10 +4,10 @@ import { aboutContent } from "../../assets/aboutContent";
 
 function About() {
    return (
-      <>
+      <section id="about">
          <BannerAbout />
          <Dropdown content={aboutContent} />
-      </>
+      </section>
    );
 }
 

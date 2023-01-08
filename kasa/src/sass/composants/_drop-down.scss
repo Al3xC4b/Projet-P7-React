@@ -1,6 +1,6 @@
 .drop-down {
-   margin: 5%;
-
+   margin-top: 10px;
+   margin-bottom: 10px;
    &__title {
       display: flex;
       justify-content: space-between;
@@ -17,6 +17,10 @@
       h2 {
          font-size: 13px;
          font-weight: 500;
+      }
+
+      span:hover {
+         cursor: pointer;
       }
    }
 

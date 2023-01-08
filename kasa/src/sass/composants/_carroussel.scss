@@ -1,5 +1,4 @@
 .carroussel {
-   margin: 5%;
    height: 255px;
    position: relative;
 
@@ -16,6 +15,7 @@
       top: 102.5px;
       font-size: 50px;
       color: $color-secondary;
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
    }
 
    &__chevron-left {

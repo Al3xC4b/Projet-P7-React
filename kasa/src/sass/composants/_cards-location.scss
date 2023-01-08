@@ -2,14 +2,29 @@
    display: flex;
    flex-direction: column;
    align-items: center;
+   margin: 5%;
+
+   @include desktop-only {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+   }
 }
 
 .cards-location {
-   width: 90%;
+   width: 100%;
    height: 255px;
    position: relative;
    margin-top: 10px;
    margin-bottom: 10px;
+
+   @include desktop-only {
+      width: 340px;
+      height: 340px;
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-bottom: 40px;
+   }
 
    &__img {
       width: 100%;
@@ -25,5 +40,9 @@
       left: 20px;
       font-size: 18px;
       color: $color-secondary;
+
+      @include desktop-only {
+         top: 268px;
+      }
    }
 }

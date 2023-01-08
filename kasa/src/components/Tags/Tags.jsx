@@ -2,9 +2,9 @@ function Tags(props) {
    const tags = props.tags;
 
    return (
-      <div className="tags">
+      <div className="logement-info__tags">
          {tags.map((tag) => (
-            <div className="tags__name" key={tag}>
+            <div className="logement-info__tag-name" key={tag}>
                {tag}
             </div>
          ))}

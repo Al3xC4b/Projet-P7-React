@@ -1,7 +1,10 @@
 .banner-home {
-   margin: 5%;
    height: 111px;
    position: relative;
+
+   @include desktop-only {
+      height: 223px;
+   }
 
    &__img {
       width: 100%;
@@ -13,11 +16,19 @@
 
    &__title {
       position: absolute;
+      width: 217px;
       font-size: 24px;
       color: $color-secondary;
       font-weight: 500;
       margin: 0;
       top: 26.5px;
       left: 16px;
+
+      @include desktop-only {
+         width: 100%;
+         text-align: center;
+         font-size: 48px;
+         top: 87.5px;
+      }
    }
 }
