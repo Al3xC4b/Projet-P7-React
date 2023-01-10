@@ -1,7 +1,8 @@
-import BannerHome from "../../components/Banner/BannerHome.jsx";
+import Banner from "../../components/Banner/Banner.jsx";
 import Cards from "../../components/Cards/Cards.jsx";
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader/Loader";
+import banner from "../../assets/bannerHome.jpg";
 
 function Home() {
    const [locationList, setLocation] = useState([]);
@@ -21,17 +22,31 @@ function Home() {
       }
       fetchLocation();
    }, []);
+
+   const dataBanner = {
+      sectionClass: "banner-home",
+      imgClass: "banner-home__img",
+      imgSrc: banner,
+      alt: "Bannière représentant un paysage d'une côte océanique",
+      titleClass: "banner-home__title",
+      title: "Chez vous, partout et ailleurs",
+   };
+
    return (
-      <section id="locations">
+      <>
          {isDataLoading ? (
-            <Loader />
+            <section id="locations">
+               <Loader />
+            </section>
          ) : (
             <>
-               <BannerHome />
-               {locationList && <Cards locationList={locationList} />}
+               <Banner content={dataBanner} />
+               <section id="locations">
+                  {locationList && <Cards locationList={locationList} />}
+               </section>
             </>
          )}
-      </section>
+      </>
    );
 }
 

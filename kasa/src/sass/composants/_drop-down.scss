@@ -1,6 +1,7 @@
 .drop-down {
    margin-top: 10px;
    margin-bottom: 10px;
+
    &__title {
       display: flex;
       justify-content: space-between;
@@ -35,5 +36,13 @@
       padding: 20px 10px 10px 10px;
       position: relative;
       z-index: 0;
+
+      ul {
+         padding-left: 0;
+      }
+
+      li {
+         list-style: none;
+      }
    }
 }

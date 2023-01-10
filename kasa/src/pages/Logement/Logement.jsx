@@ -29,6 +29,7 @@ function FicheLogement() {
          }
       }
       fetchLocation();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
    let description = [];
@@ -51,7 +52,7 @@ function FicheLogement() {
             <Loader />
          ) : (
             <>
-               <Carroussel />
+               <Carroussel pictures={logement.pictures} />
                <div className="logement-info">
                   <h1>{logement.title}</h1>
                   <div className="logement-info__location">

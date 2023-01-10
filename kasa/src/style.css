@@ -69,6 +69,7 @@ footer p {
 }
 
 .banner-home {
+  margin: 5%;
   height: 111px;
   position: relative;
 }
@@ -115,20 +116,6 @@ footer p {
   filter: brightness(0.7);
 }
 
-#locations {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 5%;
-}
-@media all and (min-width: 992px) {
-  #locations {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-}
-
 .cards-location {
   width: 100%;
   height: 255px;
@@ -136,8 +123,14 @@ footer p {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.cards-location:hover {
+  border-color: #ff6060;
+  cursor: pointer;
+}
 @media all and (min-width: 992px) {
   .cards-location {
+    border: 4px solid #f6f6f6;
+    border-radius: 14px;
     width: 340px;
     height: 340px;
     margin-left: 5px;
@@ -200,7 +193,7 @@ footer p {
   cursor: pointer;
 }
 .drop-down__content {
-  background-color: #f7f7f7;
+  background-color: #f6f6f6;
   border-radius: 0 0 5px 5px;
   margin-top: -5px;
   color: #ff6060;
@@ -211,9 +204,16 @@ footer p {
   position: relative;
   z-index: 0;
 }
+.drop-down__content ul {
+  padding-left: 0;
+}
+.drop-down__content li {
+  list-style: none;
+}
 
 .carroussel {
   height: 255px;
+  width: 100%;
   position: relative;
 }
 .carroussel__img {
@@ -272,6 +272,23 @@ footer p {
   margin-top: 133px;
   color: #ff6060;
   font-size: 14px;
+}
+
+#locations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5%;
+}
+@media all and (min-width: 992px) {
+  #locations {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2%;
+    border-radius: 25px;
+    background-color: #f6f6f6;
+  }
 }
 
 #logement {
