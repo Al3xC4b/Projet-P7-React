@@ -36,7 +36,8 @@
       color: $color-secondary;
 
       @include desktop-only {
-         top: 268px;
+         top: 250px;
+         width: 292px;
       }
    }
 }

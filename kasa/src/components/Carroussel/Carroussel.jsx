@@ -35,7 +35,7 @@ function Carroussel(props) {
    pictures && console.log(pictures[picture]);
    return (
       pictures && (
-         <div className="carroussel" ref={parentRef}>
+         <div className="carroussel">
             {isVisibleChevronLeft(picture, pictures) && (
                <span
                   className="material-symbols-outlined carroussel__chevron-left"

@@ -36,6 +36,8 @@
       padding: 20px 10px 10px 10px;
       position: relative;
       z-index: 0;
+      overflow: hidden;
+      animation: collapse 400ms;
 
       ul {
          padding-left: 0;

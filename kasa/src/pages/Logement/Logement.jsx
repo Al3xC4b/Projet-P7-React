@@ -54,29 +54,35 @@ function FicheLogement() {
             <>
                <Carroussel pictures={logement.pictures} />
                <div className="logement-info">
-                  <h1>{logement.title}</h1>
-                  <div className="logement-info__location">
-                     {logement.location && logement.location.split(" - ")[1]},{" "}
-                     {logement.location && logement.location.split(" - ")[0]}
+                  <div className="logement-title">
+                     <h1>{logement.title}</h1>
+                     <div className="logement-title__location">
+                        {logement.location && logement.location.split(" - ")[1]}
+                        ,{" "}
+                        {logement.location && logement.location.split(" - ")[0]}
+                     </div>
+                     {logement.tags && <Tags tags={logement.tags} />}
                   </div>
-                  {logement.tags && <Tags tags={logement.tags} />}
-               </div>
-               <div className="logement-rate-and-host">
-                  {logement.rating && <Rating rating={logement.rating} />}
-                  <div className="host">
-                     {logement.host && (
-                        <>
-                           <div className="host__name">
-                              {logement.host.name &&
-                                 logement.host.name.split(" ")[0]}
-                              {"\n"}
-                              {logement.host.name.split(" ")[1]}
-                           </div>
-                           <div className="host__picture">
-                              <img src={logement.host.picture} alt="Profile" />
-                           </div>
-                        </>
-                     )}
+                  <div className="logement-rate-and-host">
+                     {logement.rating && <Rating rating={logement.rating} />}
+                     <div className="host">
+                        {logement.host && (
+                           <>
+                              <div className="host__name">
+                                 {logement.host.name &&
+                                    logement.host.name.split(" ")[0]}
+                                 {"\n"}
+                                 {logement.host.name.split(" ")[1]}
+                              </div>
+                              <div className="host__picture">
+                                 <img
+                                    src={logement.host.picture}
+                                    alt="Profile"
+                                 />
+                              </div>
+                           </>
+                        )}
+                     </div>
                   </div>
                </div>
                <div className="logement-description">
