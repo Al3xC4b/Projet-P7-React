@@ -1,16 +1,8 @@
-import { useState, useEffect, useRef } from "react";
-import autoAnimate from "@formkit/auto-animate";
+import { useState } from "react";
 
 function Carroussel(props) {
    const pictures = props.pictures;
    const [picture, setPicture] = useState(0);
-   const parentRef = useRef();
-
-   useEffect(() => {
-      if (parentRef.current) {
-         autoAnimate(parentRef.current);
-      }
-   }, [parentRef]);
 
    function handleClickChevronLeft() {
       if (picture !== 0) {

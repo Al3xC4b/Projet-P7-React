@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from "react";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { useState } from "react";
 
 function Dropdown(props) {
    const content = props.content;
@@ -8,20 +7,11 @@ function Dropdown(props) {
       stateIntit.push(true);
    }
    const [hidden, setHidden] = useState(stateIntit);
-   const [parent] = useAutoAnimate();
-
-   // useEffect(() => {
-   //    if (parentRef.current) {
-   //       autoAnimate(parentRef.current);
-   //    }
-   // }, [parentRef]);
 
    function handleClick(index) {
       hidden.splice(index, 1, !hidden[index]);
       setHidden([...hidden]);
    }
-
-   console.log("useref", parent);
 
    return (
       <>
