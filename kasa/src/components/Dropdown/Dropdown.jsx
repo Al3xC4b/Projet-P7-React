@@ -8,7 +8,7 @@ function Dropdown(props) {
    }
    const [hidden, setHidden] = useState(stateIntit);
 
-   function handleClick(index) {
+   function handleClick(index, less) {
       hidden.splice(index, 1, !hidden[index]);
       setHidden([...hidden]);
    }

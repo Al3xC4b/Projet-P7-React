@@ -1,6 +1,7 @@
 .drop-down {
    margin-top: 10px;
    margin-bottom: 10px;
+   overflow: hidden;
 
    &__title {
       display: flex;
@@ -37,7 +38,11 @@
       position: relative;
       z-index: 0;
       overflow: hidden;
-      animation: collapse 400ms;
+      animation: collapse 400ms ease-out;
+
+      &--hide {
+         animation: hide 400ms ease-out;
+      }
 
       ul {
          padding-left: 0;

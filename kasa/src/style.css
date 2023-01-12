@@ -7,6 +7,26 @@
     transform: rotate(360deg);
   }
 }
+@keyframes collapse {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes hide {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
 * {
   box-sizing: border-box;
 }
@@ -175,6 +195,7 @@ footer p {
 .drop-down {
   margin-top: 10px;
   margin-bottom: 10px;
+  overflow: hidden;
 }
 .drop-down__title {
   display: flex;
@@ -208,7 +229,10 @@ footer p {
   position: relative;
   z-index: 0;
   overflow: hidden;
-  animation: collapse 400ms;
+  animation: collapse 400ms ease-out;
+}
+.drop-down__content--hide {
+  animation: hide 400ms ease-out;
 }
 .drop-down__content ul {
   padding-left: 0;
