@@ -1,55 +1,61 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Dropdown(props) {
    const content = props.content;
-   let stateIntit = [];
-   for (let i = 0; i < props.content.length; i++) {
-      stateIntit.push(true);
-   }
-   const [hidden, setHidden] = useState(stateIntit);
+   const [hidden, setHidden] = useState(true);
+   const [render, setRender] = useState(!hidden);
+   const [classHide, setClassHide] = useState("drop-down__content");
 
-   function handleClick(index, less) {
-      hidden.splice(index, 1, !hidden[index]);
-      setHidden([...hidden]);
+   useEffect(() => {
+      if (!hidden) setRender(true);
+   }, [hidden]);
+
+   function handleClick() {
+      setHidden(!hidden);
    }
+
+   function handleClickLess() {
+      setHidden(!hidden);
+      setClassHide("drop-down__content drop-down__content--hide");
+   }
+
+   const onAnimationEnd = () => {
+      if (hidden) {
+         setRender(false);
+         setClassHide("drop-down__content");
+      }
+   };
+   console.log("render", render);
+   console.log("hidden", hidden);
 
    return (
       <>
-         {content.map((dropdown, index) => (
-            <div className="drop-down" key={dropdown.title + toString(index)}>
-               <div className="drop-down__title">
-                  <h2>{dropdown.title}</h2>
-                  {hidden[index] ? (
-                     <span
-                        className="material-symbols-outlined"
-                        onClick={() => handleClick(index)}
-                     >
-                        expand_more
-                     </span>
-                  ) : (
-                     <span
-                        className="material-symbols-outlined"
-                        onClick={() => handleClick(index)}
-                     >
-                        expand_less
-                     </span>
-                  )}
-               </div>
-               {!hidden[index] ? (
-                  Array.isArray(dropdown.text) ? (
-                     <div className="drop-down__content">
-                        <ul>
-                           {dropdown.text.map((equipement) => (
-                              <li key={equipement}>{equipement}</li>
-                           ))}
-                        </ul>
-                     </div>
-                  ) : (
-                     <div className="drop-down__content">{dropdown.text}</div>
-                  )
-               ) : null}
+         <div className="drop-down">
+            <div className="drop-down__title">
+               <h2>{content[0].title}</h2>
+               {hidden ? (
+                  <span
+                     className="material-symbols-outlined"
+                     onClick={() => handleClick()}
+                  >
+                     expand_more
+                  </span>
+               ) : (
+                  <span
+                     className="material-symbols-outlined"
+                     onClick={() => handleClickLess()}
+                  >
+                     expand_less
+                  </span>
+               )}
             </div>
-         ))}
+
+            {render && (
+               <div className={classHide} onAnimationEnd={onAnimationEnd}>
+                  {content[0].text}
+               </div>
+            )}
+         </div>
       </>
    );
 }
