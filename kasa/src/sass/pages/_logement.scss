@@ -152,4 +152,16 @@
 
 .logement-description {
    width: 100%;
+
+   @include desktop-only {
+      display: flex;
+      justify-content: space-between;
+      align-content: stretch;
+   }
+
+   .drop-down {
+      @include desktop-only {
+         width: 46%;
+      }
+   }
 }

@@ -1,9 +1,8 @@
-function Banner(props) {
-   const content = props.content;
+function Banner({ content }) {
    return (
-      <section className={content.sectionClass}>
+      <section className={content.sectionClass || "banner-home"}>
          <img
-            className={content.imgClass}
+            className={content.imgClass || "banner-home__img"}
             src={content.imgSrc}
             alt={content.alt}
          />

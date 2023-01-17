@@ -1,5 +1,5 @@
 import Banner from "../../components/Banner/Banner.jsx";
-import Cards from "../../components/Cards/Cards.jsx";
+import Card from "../../components/Card/Card.jsx";
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader/Loader";
 import banner from "../../assets/bannerHome.jpg";
@@ -32,6 +32,8 @@ function Home() {
       title: "Chez vous, partout et ailleurs",
    };
 
+   console.log(locationList);
+
    return (
       <>
          {isDataLoading ? (
@@ -42,7 +44,10 @@ function Home() {
             <>
                <Banner content={dataBanner} />
                <section id="locations">
-                  {locationList && <Cards locationList={locationList} />}
+                  {locationList &&
+                     locationList.map((location) => (
+                        <Card location={location} key={location.id} />
+                     ))}
                </section>
             </>
          )}

@@ -1,8 +1,17 @@
+import { useEffect } from "react";
 import { useState } from "react";
 
-function Carroussel(props) {
-   const pictures = props.pictures;
+function Carroussel({ pictures }) {
    const [picture, setPicture] = useState(0);
+
+   useEffect(() => {
+      const interval = setInterval(() => {
+         setPicture((previous) => previous + 1);
+      }, 3000);
+      return () => clearInterval(interval);
+   }, []);
+
+   console.log(picture);
 
    function handleClickChevronLeft() {
       if (picture !== 0) {

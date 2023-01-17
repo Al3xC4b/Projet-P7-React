@@ -2,13 +2,15 @@ import { useParams } from "react-router-dom";
 import Carroussel from "../../components/Carroussel/Carroussel";
 import { useState, useEffect } from "react";
 import Loader from "../../components/Loader/Loader";
-import Tags from "../../components/Tags/Tags";
+import Tag from "../../components/Tag/Tag";
 import Rating from "../../components/Rating/Rating";
 import Dropdown from "../../components/Dropdown/Dropdown";
+import ErrorPage from "../404/404";
 
 function FicheLogement() {
    const [logement, setLogement] = useState([]);
    const [isDataLoading, setDataLoading] = useState(false);
+   const [hidden, setHidden] = useState([true, true]);
    const { logementId } = useParams();
    useEffect(() => {
       async function fetchLocation() {
@@ -50,7 +52,7 @@ function FicheLogement() {
       <section id="logement">
          {isDataLoading ? (
             <Loader />
-         ) : (
+         ) : logement.id ? (
             <>
                <Carroussel pictures={logement.pictures} />
                <div className="logement-info">
@@ -61,7 +63,13 @@ function FicheLogement() {
                         ,{" "}
                         {logement.location && logement.location.split(" - ")[0]}
                      </div>
-                     {logement.tags && <Tags tags={logement.tags} />}
+                     {logement.tags && (
+                        <div className="logement-title__tags">
+                           {logement.tags.map((tag) => (
+                              <Tag tag={tag} key={tag} />
+                           ))}
+                        </div>
+                     )}
                   </div>
                   <div className="logement-rate-and-host">
                      {logement.rating && <Rating rating={logement.rating} />}
@@ -86,9 +94,19 @@ function FicheLogement() {
                   </div>
                </div>
                <div className="logement-description">
-                  <Dropdown content={description} />
+                  {description.map((content, index) => (
+                     <Dropdown
+                        content={content}
+                        hidden={hidden}
+                        setHidden={setHidden}
+                        index={index}
+                        key={content.title + toString(index)}
+                     />
+                  ))}
                </div>
             </>
+         ) : (
+            <ErrorPage />
          )}
       </section>
    );

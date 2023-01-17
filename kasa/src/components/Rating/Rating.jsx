@@ -1,11 +1,10 @@
-function Rating(props) {
-   const rating = parseInt(props.rating);
+function Rating({ rating }) {
    const range = [1, 2, 3, 4, 5];
 
    return (
       <div className="rating">
          {range.map((elem) =>
-            rating >= elem ? (
+            parseInt(rating) >= elem ? (
                <span
                   key={elem.toString()}
                   className="material-symbols-outlined star-fullfiled"
