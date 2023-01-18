@@ -2,15 +2,21 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 function Carroussel({ pictures }) {
-   const [picture, setPicture] = useState(0);
+   const [picture, setPicture] = useState(1);
+   const [scrollAuto, setScrollAuto] = useState(1);
+   const length = pictures.length;
 
    useEffect(() => {
       const interval = setInterval(() => {
-         setPicture((previous) => previous + 1);
+         setPicture((previous) => (previous % length) + 1);
       }, 3000);
+      if (!scrollAuto) {
+         clearInterval(interval);
+      }
       return () => clearInterval(interval);
-   }, []);
+   }, [scrollAuto]);
 
+   console.log(length);
    console.log(picture);
 
    function handleClickChevronLeft() {
@@ -20,23 +26,26 @@ function Carroussel({ pictures }) {
    }
 
    function handleClickChevronRight() {
-      if (picture !== pictures.length - 1) {
+      if (picture !== pictures.length) {
          setPicture(picture + 1);
       }
    }
 
    function isVisibleChevronLeft(picture, pictures) {
-      return pictures.length !== 1 && picture !== 0;
+      return pictures.length !== 1 && picture !== 1;
    }
 
    function isVisibleChevronRight(picture, pictures) {
-      return pictures.length !== 1 && picture !== pictures.length - 1;
+      return pictures.length !== 1 && picture !== pictures.length;
    }
 
-   pictures && console.log(pictures[picture]);
    return (
       pictures && (
-         <div className="carroussel">
+         <div
+            className="carroussel"
+            onMouseEnter={() => setScrollAuto(0)}
+            onMouseLeave={() => setScrollAuto(1)}
+         >
             {isVisibleChevronLeft(picture, pictures) && (
                <span
                   className="material-symbols-outlined carroussel__chevron-left"
@@ -47,7 +56,7 @@ function Carroussel({ pictures }) {
             )}
             <img
                className="carroussel__img"
-               src={pictures[picture]}
+               src={pictures[picture ? picture - 1 : picture]}
                alt="Bannière représentant un paysage d'une côte océanique"
             />
             {isVisibleChevronRight(picture, pictures) && (

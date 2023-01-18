@@ -32,8 +32,6 @@ function Home() {
       title: "Chez vous, partout et ailleurs",
    };
 
-   console.log(locationList);
-
    return (
       <>
          {isDataLoading ? (
