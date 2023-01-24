@@ -10,6 +10,16 @@
       cursor: pointer;
    }
 
+   @include tablet-only {
+      border: 4px solid $color-tertiary;
+      border-radius: 14px;
+      width: 255px;
+      height: 255px;
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-bottom: 40px;
+   }
+
    @include desktop-only {
       border: 4px solid $color-tertiary;
       border-radius: 14px;

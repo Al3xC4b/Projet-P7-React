@@ -14,7 +14,24 @@ function About() {
    return (
       <section id="about">
          <Banner content={dataBanner} />
-         <Dropdown content={aboutContent} />
+         {aboutContent.map((content, index) => (
+            <Dropdown
+               title={content.title}
+               key={content.title + toString(index)}
+            >
+               {Array.isArray(content.text) ? (
+                  <div className="drop-down__content">
+                     <ul>
+                        {content.text.map((equipement) => (
+                           <li key={equipement}>{equipement}</li>
+                        ))}
+                     </ul>
+                  </div>
+               ) : (
+                  <div className="drop-down__content">{content.text}</div>
+               )}
+            </Dropdown>
+         ))}
       </section>
    );
 }

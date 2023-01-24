@@ -2,13 +2,26 @@
    display: flex;
    flex-direction: column;
    align-items: center;
+   justify-content: space-between;
    color: $color-primary;
+   height: 40vh;
+   margin-top: 20%;
+
+   @include tablet-only {
+      margin-top: 0;
+   }
+
+   .pageNotFound__title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+   }
 
    h1 {
       font-size: 96px;
       font-weight: 700;
-      margin-bottom: 11px;
-      margin-top: 200px;
+      margin: 0 0 3% 0;
    }
 
    p {
@@ -20,7 +33,6 @@
    }
 
    a {
-      margin-top: 133px;
       color: $color-primary;
       font-size: 14px;
    }

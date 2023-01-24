@@ -6,3 +6,13 @@ body {
    margin: 0%;
    @include font-primary;
 }
+
+#root {
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+   justify-content: space-between;
+}
+main {
+   flex: 1;
+}

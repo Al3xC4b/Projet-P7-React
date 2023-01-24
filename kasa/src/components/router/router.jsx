@@ -4,8 +4,8 @@ import FicheLogement from "../../pages/Logement/Logement";
 import Home from "../../pages/Home/Home.jsx";
 import About from "../../pages/About/About.jsx";
 import Layout from "../Layout/Layout.jsx";
-import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 export const router = createBrowserRouter([
    {
@@ -30,6 +30,10 @@ export const router = createBrowserRouter([
          {
             path: "/about",
             element: <About />,
+         },
+         {
+            path: "*",
+            element: <ErrorPage />,
          },
       ],
    },

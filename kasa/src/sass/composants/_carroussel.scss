@@ -41,4 +41,18 @@
          margin-left: -120px;
       }
    }
+
+   &__page {
+      display: none;
+
+      @include desktop-only {
+         display: block;
+         position: absolute;
+         width: 100%;
+         text-align: center;
+         bottom: 18px;
+         font-size: 18px;
+         color: $color-secondary;
+      }
+   }
 }

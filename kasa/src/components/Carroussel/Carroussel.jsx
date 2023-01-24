@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function Carroussel({ pictures }) {
    const [picture, setPicture] = useState(1);
-   const [scrollAuto, setScrollAuto] = useState(1);
+   const [scrollAuto, setScrollAuto] = useState(true);
    const length = pictures.length;
 
    useEffect(() => {
@@ -16,37 +16,37 @@ function Carroussel({ pictures }) {
       return () => clearInterval(interval);
    }, [scrollAuto]);
 
-   console.log(length);
-   console.log(picture);
-
    function handleClickChevronLeft() {
-      if (picture !== 0) {
+      if (picture > 1) {
          setPicture(picture - 1);
+      } else if (picture === 1) {
+         setPicture(length);
       }
    }
 
    function handleClickChevronRight() {
-      if (picture !== pictures.length) {
+      if (picture < length) {
          setPicture(picture + 1);
+      } else if (picture === length) {
+         setPicture(1);
       }
    }
 
-   function isVisibleChevronLeft(picture, pictures) {
-      return pictures.length !== 1 && picture !== 1;
-   }
-
-   function isVisibleChevronRight(picture, pictures) {
-      return pictures.length !== 1 && picture !== pictures.length;
+   function isVisibleChevron(pictures) {
+      return pictures.length !== 1;
    }
 
    return (
       pictures && (
          <div
             className="carroussel"
-            onMouseEnter={() => setScrollAuto(0)}
-            onMouseLeave={() => setScrollAuto(1)}
+            onMouseEnter={() => setScrollAuto(false)}
+            onMouseLeave={() => setScrollAuto(true)}
          >
-            {isVisibleChevronLeft(picture, pictures) && (
+            <div className="carroussel__page">
+               {picture}/{length}
+            </div>
+            {isVisibleChevron(pictures) && (
                <span
                   className="material-symbols-outlined carroussel__chevron-left"
                   onClick={() => handleClickChevronLeft()}
@@ -59,7 +59,8 @@ function Carroussel({ pictures }) {
                src={pictures[picture ? picture - 1 : picture]}
                alt="Bannière représentant un paysage d'une côte océanique"
             />
-            {isVisibleChevronRight(picture, pictures) && (
+
+            {isVisibleChevron(pictures) && (
                <span
                   className="material-symbols-outlined carroussel__chevron-right"
                   onClick={() => handleClickChevronRight()}

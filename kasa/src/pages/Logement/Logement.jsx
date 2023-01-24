@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Carroussel from "../../components/Carroussel/Carroussel";
 import { useState, useEffect } from "react";
 import Loader from "../../components/Loader/Loader";
@@ -8,9 +8,9 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import ErrorPage from "../404/404";
 
 function FicheLogement() {
-   const [logement, setLogement] = useState([]);
+   const [logement, setLogement] = useState({});
    const [isDataLoading, setDataLoading] = useState(false);
-   const [hidden, setHidden] = useState([true, true]);
+   const navigate = useNavigate();
    const { logementId } = useParams();
    useEffect(() => {
       async function fetchLocation() {
@@ -18,11 +18,16 @@ function FicheLogement() {
          try {
             const response = await fetch("/data/logements.json");
             const locations = await response.json();
+            let found = false;
             for (let location of locations) {
                if (location.id === logementId) {
                   setLogement(location);
+                  found = true;
                   break;
                }
+            }
+            if (!found) {
+               navigate("/404");
             }
          } catch (e) {
             console.log(e);
@@ -33,7 +38,7 @@ function FicheLogement() {
       fetchLocation();
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
-
+   console.log(logement);
    let description = [];
    if (logement.description) {
       description.push(
@@ -96,12 +101,23 @@ function FicheLogement() {
                <div className="logement-description">
                   {description.map((content, index) => (
                      <Dropdown
-                        content={content}
-                        hidden={hidden}
-                        setHidden={setHidden}
-                        index={index}
+                        title={content.title}
                         key={content.title + toString(index)}
-                     />
+                     >
+                        {Array.isArray(content.text) ? (
+                           <div className="drop-down__content">
+                              <ul>
+                                 {content.text.map((equipement) => (
+                                    <li key={equipement}>{equipement}</li>
+                                 ))}
+                              </ul>
+                           </div>
+                        ) : (
+                           <div className="drop-down__content">
+                              {content.text}
+                           </div>
+                        )}
+                     </Dropdown>
                   ))}
                </div>
             </>
