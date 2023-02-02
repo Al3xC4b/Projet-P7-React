@@ -4,6 +4,17 @@
    align-items: center;
    margin: 5%;
 
+   a {
+      width: 100%;
+
+      @include tablet-only {
+         width: 300px;
+      }
+      @include desktop-only {
+         width: 340px;
+      }
+   }
+
    @include tablet-only {
       flex-direction: row;
       flex-wrap: wrap;

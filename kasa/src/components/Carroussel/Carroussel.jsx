@@ -14,6 +14,7 @@ function Carroussel({ pictures }) {
          clearInterval(interval);
       }
       return () => clearInterval(interval);
+      // eslint-disable-next-line
    }, [scrollAuto]);
 
    function handleClickChevronLeft() {
