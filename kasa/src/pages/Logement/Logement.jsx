@@ -38,7 +38,6 @@ function FicheLogement() {
       fetchLocation();
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
-   console.log(logement);
    let description = [];
    if (logement.description) {
       description.push(
