@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Dropdown({ title, children }) {
+function Collapse({ title, children }) {
    const [hidden, setHidden] = useState(true);
    function handleClick() {
       setHidden(!hidden);
@@ -22,4 +22,4 @@ function Dropdown({ title, children }) {
    );
 }
 
-export default Dropdown;
+export default Collapse;

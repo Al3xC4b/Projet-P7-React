@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import ErrorPage from "../../pages/404/404";
+import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import FicheLogement from "../../pages/Logement/Logement";
 import Home from "../../pages/Home/Home.jsx";
 import About from "../../pages/About/About.jsx";
-import Layout from "../Layout/Layout.jsx";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Layout from "../../Layout/Layout.jsx";
+import Header from "../../Layout/Header/Header";
+import Footer from "../../Layout/Footer/Footer";
 
 export const router = createBrowserRouter([
    {

@@ -1,11 +1,11 @@
 import { useParams, useNavigate } from "react-router-dom";
-import Carroussel from "../../components/Carroussel/Carroussel";
+import Gallery from "../../components/Gallery/Gallery";
 import { useState, useEffect } from "react";
 import Loader from "../../components/Loader/Loader";
 import Tag from "../../components/Tag/Tag";
 import Rating from "../../components/Rating/Rating";
-import Dropdown from "../../components/Dropdown/Dropdown";
-import ErrorPage from "../404/404";
+import Collapse from "../../components/Collapse/Collapse";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 function FicheLogement() {
    const [logement, setLogement] = useState({});
@@ -58,7 +58,7 @@ function FicheLogement() {
             <Loader />
          ) : logement.id ? (
             <>
-               <Carroussel pictures={logement.pictures} />
+               <Gallery pictures={logement.pictures} />
                <div className="logement-info">
                   <div className="logement-title">
                      <h1>{logement.title}</h1>
@@ -99,7 +99,7 @@ function FicheLogement() {
                </div>
                <div className="logement-description">
                   {description.map((content, index) => (
-                     <Dropdown
+                     <Collapse
                         title={content.title}
                         key={content.title + toString(index)}
                      >
@@ -116,7 +116,7 @@ function FicheLogement() {
                               {content.text}
                            </div>
                         )}
-                     </Dropdown>
+                     </Collapse>
                   ))}
                </div>
             </>

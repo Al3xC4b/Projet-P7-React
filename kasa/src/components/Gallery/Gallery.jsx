@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-function Carroussel({ pictures }) {
+function Gallery({ pictures }) {
    const [picture, setPicture] = useState(1);
    const [scrollAuto, setScrollAuto] = useState(true);
    const length = pictures.length;
@@ -44,9 +44,11 @@ function Carroussel({ pictures }) {
             onMouseEnter={() => setScrollAuto(false)}
             onMouseLeave={() => setScrollAuto(true)}
          >
-            <div className="carroussel__page">
-               {picture}/{length}
-            </div>
+            {isVisibleChevron(pictures) && (
+               <div className="carroussel__page">
+                  {picture}/{length}
+               </div>
+            )}
             {isVisibleChevron(pictures) && (
                <span
                   className="material-symbols-outlined carroussel__chevron-left"
@@ -74,4 +76,4 @@ function Carroussel({ pictures }) {
    );
 }
 
-export default Carroussel;
+export default Gallery;

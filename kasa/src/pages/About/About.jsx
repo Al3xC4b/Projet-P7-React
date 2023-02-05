@@ -1,5 +1,5 @@
 import Banner from "../../components/Banner/Banner";
-import Dropdown from "../../components/Dropdown/Dropdown";
+import Collapse from "../../components/Collapse/Collapse";
 import { aboutContent } from "../../assets/aboutContent";
 import banner from "../../assets/bannerAbout.jpg";
 
@@ -15,7 +15,7 @@ function About() {
       <section id="about">
          <Banner content={dataBanner} />
          {aboutContent.map((content, index) => (
-            <Dropdown
+            <Collapse
                title={content.title}
                key={content.title + toString(index)}
             >
@@ -30,7 +30,7 @@ function About() {
                ) : (
                   <div className="drop-down__content">{content.text}</div>
                )}
-            </Dropdown>
+            </Collapse>
          ))}
       </section>
    );
